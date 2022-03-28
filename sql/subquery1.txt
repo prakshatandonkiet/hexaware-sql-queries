@@ -1,0 +1,93 @@
+create database hexaware_mavericks;
+use hexaware_mavericks;
+create table my_employee(
+id int(4) not null,
+last_name varchar(25),
+first_name varchar(25),
+userid varchar(8),
+salary double (9,2)
+);
+desc my_employee;
+insert into my_employee value(1,'Patel','vikas','rpatel',895);
+insert into my_employee value(2,'dancs','betty','bdancs',860);
+insert into my_employee value(3,'verma','ankit','averma',890);
+insert into my_employee value(4,'jain','yashi','yjain',900);
+desc my_employee;
+select* from my_employee;
+update my_employee set last_name='drelex' where id=3;
+update my_employee set last_name='drelex' where last_name='verma';
+update my_employee set salary=1000 where salary<900;
+delete from my_employee where last_name='dancs';
+delete from my_employee;
+select max(salary) from my_employee;
+select first_name from my_employee where salary=( select max(salary)from my_employee);
+
+
+create table emp12(
+e_id int(7),
+e_name varchar(25),
+dep varchar(22),
+salary double(9,2)
+);
+desc emp12;
+insert into emp12 values(11,'vikas','mca',10000);
+insert into emp12 values(22,'abhishek','bca',20000);
+insert into emp12 values(33,'kpn','bsc',30000);
+insert into emp12 values(44,'yashi','btech',40000);
+select max(salary) from emp12;
+select e_name from emp12 where salary= (select max(salary) from emp12);
+select e_name from emp12;
+select max(salary) from emp12 where salary<>(select max(salary) from emp12);
+select dep from  emp12 group by dep;
+select dep from emp12 group by dep having count(*)<2;
+ 
+ (select dep,max(salary) from emp12 group by dep);
+ 
+ create table new_employee(
+ id int(7),
+ e_name varchar(25),
+ dept varchar(20),
+ salary int(8)
+ );
+ desc new_employee;
+ insert into new_employee values(1,'amit','HR',10000);
+  insert into new_employee values(2,'ram','MRKT',20000);
+ insert into new_employee values(3,'ravi','HR',30000);
+ insert into new_employee values(4,'nitin','MRKT',40000);
+  insert into new_employee values(5,'varun','IT',50000);
+  select dept from new_employee group by dept;
+  select max(salary) from new_employee;
+ select max(salary) from new_employee where salary<>(select max(salary) from new_employee);
+ select dept,max(salary) from new_employee group by dept;
+ select e_name from new_employee where salary in (select dept,max(salary) from new_employee group by dept);
+
+create table new_emp11(
+id int (6),
+e_name varchar(25),
+address varchar(25)
+);
+desc new_emp11;
+insert into new_emp11 values(1, 'ravi', 'chd');
+insert into new_emp11 values(2, 'varun', 'delhi');
+insert into new_emp11 values(3, 'nitin', 'pune');
+insert into new_emp11 values(4, 'robin', 'banglore');
+insert into new_emp11 values(5, 'ammy', 'chd');
+desc new_emp11;
+select* from new_emp11;
+ create table project(
+ id int(6),
+ p_id int(7),
+ p_name varchar(25),
+ location varchar(25)
+ );
+ desc project;
+ insert into project values(1,'11','iot','banglore');
+  insert into project values(5,'22','bigdata','delhi');
+   insert into project values(3,'33','retail','mumbai');
+    insert into project values(4,'44','android','hyderabad');
+    select*from project;
+    select*from new_emp11 where address in('delhi','chd','pune');
+    select e_name from new_emp11 where id in(select id from project);
+    select*from new_emp11 where id exists (slect id from project where new_emp11.id=project.id);
+
+

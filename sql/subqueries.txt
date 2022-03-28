@@ -1,0 +1,15 @@
+show databases;
+use practice1and2;
+select * from emp;
+-- 1
+select ename, hiredate from emp where deptno in (select deptno from emp where ename = 'smith') and ename!= 'smith';
+-- 2
+select empno, ename from emp where sal > (select avg(sal) from emp) order by sal;
+-- 3
+select empno, ename from emp where deptno in (select deptno from emp where ename like '%u%');
+-- 4
+select ename, sal from emp where mgr in (select empno from emp where ename ='blake');
+-- 5
+select deptno, ename, job from emp where deptno in(select deptno from emp where job = 'salesman');
+-- 6
+select empno, ename, sal from emp where deptno in (select deptno from emp where ename like '%a%') and sal > (select avg(sal) from emp);

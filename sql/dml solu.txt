@@ -1,0 +1,22 @@
+create database hexaware_mavericks;
+use hexaware_mavericks;
+create table my_employee(
+id int(4) not null,
+last_name varchar(25),
+first_name varchar(25),
+userid varchar(8),
+salary double (9,2)
+);
+desc my_employee;
+insert into my_employee value(1,'Patel','vikas','rpatel',895);
+insert into my_employee value(2,'dancs','betty','bdancs',860);
+insert into my_employee value(3,'verma','ankit','averma',890);
+insert into my_employee value(4,'jain','yashi','yjain',900);
+desc my_employee;
+select* from my_employee;
+update my_employee set last_name='drelex' where id=3;
+update my_employee set last_name='drelex' where last_name='verma';
+update my_employee set salary=1000 where salary<900;
+delete from my_employee where last_name='dancs';
+delete from my_employee;
+

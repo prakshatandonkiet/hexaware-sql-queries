@@ -1,0 +1,72 @@
+create database digital_mavericks;
+use digital_mavericks;
+create table dep(
+dep_name varchar(25),
+dep_id int(7)
+);
+insert into dep value('mca',1);
+insert into dep value('bca',2);
+insert into dep value('btech',3);
+
+create table employee(
+emp_name varchar(25),
+emp_id int(7),
+emp_first_name varchar(25),
+emp_last_name varchar(25),
+dep_id int(7)
+);
+alter table employee modify emp_last_name varchar(50);
+
+create table emp1
+select emp_id as ID, emp_first_name as FIRST_NAME, emp_last_name as LAST_NAME, dep_id as DEPT_ID
+from employee;
+drop table employee;
+alter table emp1 rename to employee;
+alter table emp1 drop column emp_first_name;
+
+
+
+
+create table employees(
+ emp_name varchar(34),
+ emp_id int (8),
+ department_id int (7)
+ );
+ create table department(
+ department_id int (7),
+ department_name varchar(25),
+ department_subject varchar(44)
+ );
+ insert into employees value('Rajat',1,11);
+ insert into employees value('Vijay',2,22);
+ insert into employees value('Ashish',3,33);
+ desc employees;
+ 
+ insert into department value(11,'MCA','CN');
+  insert into department value(22,'BCA','HTML');
+   insert into department value(33,'BSC','MATHS');
+   desc department;
+   
+   alter table employees
+   add constraint emp_id_pk
+   primary key(emp_id);
+   
+   alter table deaprtment
+   add constraint department_id_pk
+   primary key(department_id);
+   
+   alter table employees
+   add department_id int(10);
+   alter table employees 
+   
+   
+   alter table employees drop primary key;
+   alter table employee add constraint my_emp_department_id_fk 
+   foreign key(department_id) references department(department_id);
+    desc department;
+   
+       select  constraint_name, 
+   constraint_type,
+   from user_constraints
+   where table_name in('employees','department');
+   

@@ -1,0 +1,25 @@
+create database digital_mavericks;
+use digital_mavericks;
+create table dep(
+dep_name varchar(25),
+dep_id int(7)
+);
+insert into dep value('mca',1);
+insert into dep value('bca',2);
+insert into dep value('btech',3);
+
+create table employee(
+emp_name varchar(25),
+emp_id int(7),
+emp_first_name varchar(25),
+emp_last_name varchar(25),
+dep_id int(7)
+);
+alter table employee modify emp_last_name varchar(50);
+
+create table emp1
+select emp_id as ID, emp_first_name as FIRST_NAME, emp_last_name as LAST_NAME, dep_id as DEPT_ID
+from employee;
+drop table employee;
+alter table emp1 rename to employee;
+alter table emp1 drop column emp_first_name;
